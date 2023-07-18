@@ -3,9 +3,9 @@ The PhotoLabs project for the Web Development React course programming done by J
 
 # Photolabs
 
-![home page](docs/home page.png)
-![image view](docs/image view.png)
-![other categorize](docs/other categorize.png)
+![home page](https://github.com/adavidliang/photolabs-starter/blob/main/docs/home%20page.png)
+![image view](https://github.com/adavidliang/photolabs-starter/blob/main/docs/image%20view.png)
+![other categorize](https://github.com/adavidliang/photolabs-starter/blob/main/docs/other%20categorize.png)
 
 ## Setup
 
