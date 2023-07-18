@@ -3,9 +3,9 @@ The PhotoLabs project for the Web Development React course programming done by J
 
 # Photolabs
 
-![home page](home page.png)
-![image view](image view.png)
-![other categorize](image-2.png)
+![home page](docs/home page.png)
+![image view](docs/image view.png)
+![other categorize](docs/other categorize.png)
 
 ## Setup
 
