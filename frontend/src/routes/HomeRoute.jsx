@@ -2,19 +2,27 @@ import React from 'react';
 import TopNavigationBar from '../components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 import PhotoList from '../components/PhotoList';
-import { useState } from 'react'
 
 
-const HomeRoute = () =>{
-  
-  const [favPhotos, setFavPhotos] = useState([]);
-
+const HomeRoute = (props) =>{
+  const {favPhotos, topics, fetchPhotosByTopic, photos, dispatch, setIsModalOpen, setPhotoDetail} = props
 
 
 return(
   <div className="home-route">
-    <TopNavigationBar favPhotos={favPhotos} />
-    <PhotoList setFavPhotos={setFavPhotos}/>
+    <TopNavigationBar 
+    favPhotos={favPhotos} 
+    topics={topics}
+    fetchPhotosByTopic={fetchPhotosByTopic}
+    />
+    <PhotoList
+    favPhotos={favPhotos}
+    photos={photos}
+    dispatch={dispatch}
+    isModalOpen={props.isModalOpen}
+    setIsModalOpen={setIsModalOpen}
+    setPhotoDetail={setPhotoDetail}
+    />
   </div>
 )
 }

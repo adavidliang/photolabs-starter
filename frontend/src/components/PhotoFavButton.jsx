@@ -1,29 +1,19 @@
 import React, { useCallback, useState } from 'react';
-
 import { FavIcon } from './FavIcon';
 import { FavBadge } from './FavBadge';
 import '../styles/PhotoFavButton.scss';
+import { ADD_FAVOURITE, REMOVE_FAVOURITE } from '../hooks/useApplicationData'
+
 
 function PhotoFavButton(props) {
-  const [fav, setFav] = useState('off');
+const {dispatch, isFav} = props
 
   const handleClick = () => {
-    if (fav === "off") {
-      setFav("on");
-      props.setFavPhotos((prevFavPhotos) => {
-        return [...prevFavPhotos, props.id]
-      });
+  
+    if (isFav) {
+      dispatch({type: REMOVE_FAVOURITE,  id: props.id})
     } else {
-      setFav("off");
-      props.setFavPhotos((prevFavPhotos) => {
-        const newFav = [];
-        for (let id of prevFavPhotos) {
-          if (id !== props.id) {
-            newFav.push(id)
-          }
-        }
-       return newFav;
-      });
+      dispatch({type: ADD_FAVOURITE, id: props.id})
   }
 
   }
@@ -31,7 +21,7 @@ function PhotoFavButton(props) {
   return (
     <div className="photo-list__fav-icon" onClick={handleClick} >
       <div className="photo-list__fav-icon-svg">
-        {fav === "off" ? <FavIcon /> : <FavBadge />}
+        { isFav ? <FavBadge /> : <FavIcon />}
       </div>
     </div>
   );

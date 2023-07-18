@@ -1,16 +1,17 @@
 import React from 'react';
 import TopicListItem from './TopicListItem';
 import '../styles/TopicList.scss';
-import topics from '../mocks/topics';
 
 const TopicList = (props) => {
-  const topic = topics.map((list) => {
+  const { fetchPhotosByTopic } = props
+  const topic = props.topics && props.topics.map((list) => {
     return(
       <TopicListItem
       key={list.id}
       id={list.id}
       slug={list.slug}
       title={list.title}
+      fetchPhotosByTopic={fetchPhotosByTopic}
       />
     )
   });
