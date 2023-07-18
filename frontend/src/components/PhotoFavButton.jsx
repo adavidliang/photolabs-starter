@@ -9,7 +9,6 @@ function PhotoFavButton(props) {
 const {dispatch, isFav} = props
 
   const handleClick = () => {
-  
     if (isFav) {
       dispatch({type: REMOVE_FAVOURITE,  id: props.id})
     } else {

@@ -14,6 +14,7 @@ return(
     favPhotos={favPhotos} 
     topics={topics}
     fetchPhotosByTopic={fetchPhotosByTopic}
+    onViewFavPhotos={props.onViewFavPhotos}
     />
     <PhotoList
     favPhotos={favPhotos}

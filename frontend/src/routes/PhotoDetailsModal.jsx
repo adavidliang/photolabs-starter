@@ -12,7 +12,7 @@ export const PhotoDetailsModal = (props) => {
   let photo = props.photos.find((photo) => photo.id == props.photoDetail.id)
   const { similar_photos } = photo;
 
-  console.log("photo have ", photo)
+
   let arrSimilar = Object.values(similar_photos);
 
   return (

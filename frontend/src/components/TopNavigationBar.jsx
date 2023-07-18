@@ -4,6 +4,8 @@ import '../styles/TopNavigationBar.scss'
 import TopicList from '../components/TopicList';
 
 const TopNavigation = (props) => {
+
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
@@ -11,7 +13,9 @@ const TopNavigation = (props) => {
       topics={props.topics}
       fetchPhotosByTopic={props.fetchPhotosByTopic}
       />
-      <FavBadge isFavPhotoExist={props.favPhotos.length}/>
+      <div onClick={props.onViewFavPhotos}>
+      <FavBadge isFavPhotoExist={props.favPhotos.length} />
+      </div>
     </div>
   )
 }

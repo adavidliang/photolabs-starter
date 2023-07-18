@@ -6,7 +6,6 @@ import PhotoFavButton from './PhotoFavButton';
 const PhotoListItem = (props) => {
   
   const handleClick = () => {
-    console.log("photo",props.photo)
     if (props.isModalOpen === false){
       props.setIsModalOpen(true);
       props.setPhotoDetail(

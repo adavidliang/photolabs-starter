@@ -1,7 +1,10 @@
-import { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import axios from 'axios';
+import FavPhotos from '../routes/FavPhotos';
 export const ADD_FAVOURITE = 'ADD_FAVOURIT';
 export const REMOVE_FAVOURITE = 'REMOVE_FAVOURITE';
+
+
 export default function useApplicationData(props) {
 
 
@@ -28,11 +31,22 @@ export default function useApplicationData(props) {
   const [favPhotos, dispatch] = useReducer(reducer, []);
 
 
-  // const [favPhotos, setFavPhotos] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [photoDetail, setPhotoDetail] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [topics, setTopics] = useState([]);
   const [photos, setPhotos] = useState([]);
+  const [viewFavPhotos, setViewFavPhotos] = useState(false);
+  
+  useEffect(() => {
+    if(viewFavPhotos === true) {
+      setPhotos(prev => prev.filter((photo) =>  favPhotos.includes(photo.id)))
+    }
+  },[favPhotos])
+
+  const onViewFavPhotos = () => {
+    setViewFavPhotos(true);
+    setPhotos(prev => prev.filter((photo) =>  favPhotos.includes(photo.id)))
+  }
 
   const handleXClick = () => { 
     setIsModalOpen(false)
@@ -52,6 +66,7 @@ export default function useApplicationData(props) {
   useEffect(() => {
     axios.get('/api/photos')
       .then(res => {
+        setViewFavPhotos(false)
         setPhotos([...res.data])
       }).catch(e => {
         console.log("error :" (e));
@@ -64,6 +79,7 @@ export default function useApplicationData(props) {
   const  fetchPhotosByTopic = (topicID) => {
     axios.get(`/api/topics/photos/${topicID}`)
       .then(res => {
+        setViewFavPhotos(false)
         setPhotos([...res.data])
       }).catch(e => {
         console.log("error :" (e));
@@ -83,7 +99,8 @@ export default function useApplicationData(props) {
         handleXClick,
         topics,
         photos,
-        fetchPhotosByTopic
+        fetchPhotosByTopic,
+        onViewFavPhotos
       }
     
 )

@@ -18,7 +18,8 @@ import useApplicationData from './hooks/useApplicationData';
       handleXClick,
       fetchPhotosByTopic,
       topics,
-      photos
+      photos,
+      onViewFavPhotos
     } = useApplicationData()
   
   
@@ -34,6 +35,7 @@ import useApplicationData from './hooks/useApplicationData';
     setPhotoDetail={setPhotoDetail}
     topics={topics}
     fetchPhotosByTopic={fetchPhotosByTopic}
+    onViewFavPhotos={onViewFavPhotos}
     />
     {isModalOpen && <PhotoDetailsModal handleXClick={handleXClick} dispatch={dispatch} favPhotos={favPhotos} photoDetail={photoDetail} photos={photos} setIsModalOpen={setIsModalOpen} setPhotoDetail={setPhotoDetail} isModalOpen={isModalOpen}/>}
   </div>
